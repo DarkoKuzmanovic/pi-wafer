@@ -1,5 +1,5 @@
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import type { OAuthCredentials, OAuthLoginCallbacks } from "@mariozechner/pi-ai";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import type { OAuthCredentials, OAuthLoginCallbacks } from "@earendil-works/pi-ai";
 
 const WAFER_BASE_URL = "https://pass.wafer.ai/v1";
 const NEVER_EXPIRES = 8_640_000_000_000_000; // Date max-ish, safely below JS max integer.

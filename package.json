@@ -1,0 +1,20 @@
+{
+  "name": "pi-wafer",
+  "version": "1.0.0",
+  "description": "Wafer Pass provider for Pi coding agent — use Wafer-hosted models (DeepSeek, GLM, Qwen, MiniMax) directly from Pi",
+  "keywords": ["pi-package"],
+  "main": "pi-wafer.ts",
+  "pi": {
+    "extensions": ["./pi-wafer.ts"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-ai": "*"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DarkoKuzmanovic/pi-wafer.git"
+  },
+  "author": "Darko Kuzmanovic"
+}
