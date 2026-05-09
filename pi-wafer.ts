@@ -106,7 +106,6 @@ export default function waferPassExtension(pi: ExtensionAPI) {
 	pi.registerProvider("wafer", {
 		name: "Wafer Pass",
 		baseUrl: WAFER_BASE_URL,
-		apiKey: "WAFER_API_KEY",
 		api: "openai-completions",
 		models: MODELS,
 		oauth: {

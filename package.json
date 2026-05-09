@@ -5,6 +5,9 @@
   "keywords": ["pi-package"],
   "main": "pi-wafer.ts",
   "pi": {
+  "scripts": {
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
     "extensions": ["./pi-wafer.ts"]
   },
   "peerDependencies": {
