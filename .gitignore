@@ -1,4 +1,7 @@
-.pi/todos/
-.DS_Store
-AGENTS.md
 node_modules/
+dist/
+*.js
+*.d.ts
+*.tsbuildinfo
+.DS_Store
+Thumbs.db

@@ -1,6 +1,6 @@
 # pi-wafer
 
-[Wafer Pass](https://wafer.ai) provider for [Pi](https://github.com/nicobailon/pi-coding-agent). Registers Wafer as a model provider so you can use Wafer-hosted models directly from Pi.
+[Wafer Pass](https://wafer.ai) provider for [Pi](https://github.com/earendil-works/pi-mono). Registers Wafer as a model provider so you can use Wafer-hosted models directly from Pi.
 
 ## Available models
 
