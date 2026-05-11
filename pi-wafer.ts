@@ -1,5 +1,8 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import type { OAuthCredentials, OAuthLoginCallbacks } from "@earendil-works/pi-ai";
+import type {
+	OAuthCredentials,
+	OAuthLoginCallbacks,
+} from "@earendil-works/pi-ai";
 
 const WAFER_BASE_URL = "https://pass.wafer.ai/v1";
 const NEVER_EXPIRES = 8_640_000_000_000_000; // Date max-ish, safely below JS max integer.
@@ -20,6 +23,13 @@ const MODELS = [
 			supportsUsageInStreaming: true,
 			maxTokensField: "max_tokens" as const,
 		},
+		thinkingLevelMap: {
+			off: "low",
+			minimal: null,
+			low: "low",
+			medium: null,
+			high: "high",
+		} as Record<string, string | null | undefined>,
 	},
 	{
 		id: "Qwen3.5-397B-A17B",
@@ -54,6 +64,13 @@ const MODELS = [
 			supportsUsageInStreaming: true,
 			maxTokensField: "max_tokens" as const,
 		},
+		thinkingLevelMap: {
+			off: "off",
+			minimal: null,
+			low: null,
+			medium: null,
+			high: "high",
+		} as Record<string, string | null | undefined>,
 	},
 	{
 		id: "MiniMax-M2.7",
@@ -71,28 +88,22 @@ const MODELS = [
 			supportsUsageInStreaming: true,
 			maxTokensField: "max_tokens" as const,
 		},
-	},
-	{
-		id: "Qwen3.6-35B-A3B",
-		name: "Qwen3.6 35B A3B (Wafer)",
-		reasoning: true,
-		input: ["text" as const],
-		contextWindow: 262144,
-		maxTokens: 32768,
-		cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
-		compat: {
-			thinkingFormat: "deepseek" as const,
-			supportsStore: false,
-			supportsDeveloperRole: false,
-			supportsReasoningEffort: false,
-			supportsUsageInStreaming: true,
-			maxTokensField: "max_tokens" as const,
-		},
+		thinkingLevelMap: {
+			off: null,
+			minimal: null,
+			low: null,
+			medium: null,
+			high: "high",
+		} as Record<string, string | null | undefined>,
 	},
 ];
 
-async function loginWafer(callbacks: OAuthLoginCallbacks): Promise<OAuthCredentials> {
-	const key = (await callbacks.onPrompt({ message: "Enter your Wafer Pass API key:" })).trim();
+async function loginWafer(
+	callbacks: OAuthLoginCallbacks,
+): Promise<OAuthCredentials> {
+	const key = (
+		await callbacks.onPrompt({ message: "Enter your Wafer Pass API key:" })
+	).trim();
 	if (!key) throw new Error("Wafer API key is required");
 
 	return {

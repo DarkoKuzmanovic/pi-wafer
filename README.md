@@ -4,13 +4,13 @@
 
 ## Available models
 
-| Model | Context window | Max tokens | Reasoning | Cost (input/output) |
-|---|---|---|---|---|
-| DeepSeek V4 Pro | 262K | 32K | ✅ DeepSeek format | Free |
-| Qwen3.5 397B A17B | 262K | 32K | ✅ DeepSeek format + effort | $0.60 / $3.60 |
-| GLM 5.1 | 202K | 32K | ✅ ZAI format | $1.50 / $4.50 |
-| MiniMax M2.7 | 204K | 32K | ✅ DeepSeek format | Free |
-| Qwen3.6 35B A3B | 262K | 32K | ✅ DeepSeek format | Free |
+| Model             | Context window | Max tokens | Reasoning                   | Cost (input/output) |
+| ----------------- | -------------- | ---------- | --------------------------- | ------------------- |
+| DeepSeek V4 Pro   | 262K           | 32K        | ✅ DeepSeek format          | Free                |
+| Qwen3.5 397B A17B | 262K           | 32K        | ✅ DeepSeek format + effort | $0.60 / $3.60       |
+| GLM 5.1           | 202K           | 32K        | ✅ ZAI format               | $1.50 / $4.50       |
+| MiniMax M2.7      | 204K           | 32K        | ✅ DeepSeek format          | Free                |
+| Qwen3.6 35B A3B   | 262K           | 32K        | ✅ DeepSeek format          | Free                |
 
 ## Install
 
@@ -41,9 +41,9 @@ Switch models with `/model`:
 ## How it works
 
 - Registers a `wafer` provider via `pi.registerProvider()`
-- Uses the OpenAI Completions API format (`/v1/chat/completions`)
-- API key is stored as an OAuth credential with a far-future expiry
-- Each model declaration includes compatibility flags for thinking format, store support, and usage streaming
+- Uses Wafer's OpenAI-compatible Chat Completions endpoint (`/v1/chat/completions`)
+- API key is stored as an OAuth credential with a far-future expiry and sent as `Authorization: Bearer <key>`
+- Each model declaration includes context, pricing, and thinking metadata for Pi's model picker
 
 ## License
 
