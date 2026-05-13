@@ -9,15 +9,11 @@
 | DeepSeek V4 Pro   | 262K           | 32K        | ✅ DeepSeek format          | Free                |
 | Qwen3.5 397B A17B | 262K           | 32K        | ✅ DeepSeek format + effort | $0.60 / $3.60       |
 | GLM 5.1           | 202K           | 32K        | ✅ ZAI format               | $1.50 / $4.50       |
-| MiniMax M2.7      | 204K           | 32K        | ✅ DeepSeek format          | Free                |
-| Qwen3.6 35B A3B   | 262K           | 32K        | ✅ DeepSeek format          | Free                |
 
 ## Install
 
-```bash
-git clone https://github.com/DarkoKuzmanovic/pi-wafer.git ~/.pi/agent/git/github.com/DarkoKuzmanovic/pi-wafer
-cd ~/.pi/agent/git/github.com/DarkoKuzmanovic/pi-wafer
-chmod +x install.sh && ./install.sh
+```shell
+pi install git:github.com/DarkoKuzmanovic/pi-wafer
 ```
 
 Then restart Pi.
@@ -35,7 +31,6 @@ Switch models with `/model`:
 ```
 /model wafer/GLM-5.1
 /model wafer/DeepSeek-V4-Pro
-/model wafer/MiniMax-M2.7
 ```
 
 ## How it works

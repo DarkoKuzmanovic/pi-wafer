@@ -72,30 +72,6 @@ const MODELS = [
 			high: "high",
 		} as Record<string, string | null | undefined>,
 	},
-	{
-		id: "MiniMax-M2.7",
-		name: "MiniMax M2.7 (Wafer)",
-		reasoning: true,
-		input: ["text" as const],
-		contextWindow: 204800,
-		maxTokens: 32768,
-		cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
-		compat: {
-			thinkingFormat: "deepseek" as const,
-			supportsStore: false,
-			supportsDeveloperRole: false,
-			supportsReasoningEffort: false,
-			supportsUsageInStreaming: true,
-			maxTokensField: "max_tokens" as const,
-		},
-		thinkingLevelMap: {
-			off: null,
-			minimal: null,
-			low: null,
-			medium: null,
-			high: "high",
-		} as Record<string, string | null | undefined>,
-	},
 ];
 
 async function loginWafer(

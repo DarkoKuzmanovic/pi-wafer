@@ -1,13 +1,13 @@
 {
   "name": "pi-wafer",
   "version": "1.0.0",
-  "description": "Wafer Pass provider for Pi coding agent — use Wafer-hosted models (DeepSeek, GLM, Qwen, MiniMax) directly from Pi",
+  "description": "Wafer Pass provider for Pi coding agent — use Wafer-hosted models (DeepSeek, GLM, Qwen) directly from Pi",
   "keywords": ["pi-package"],
   "main": "pi-wafer.ts",
-  "pi": {
   "scripts": {
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
+  "pi": {
     "extensions": ["./pi-wafer.ts"]
   },
   "peerDependencies": {
