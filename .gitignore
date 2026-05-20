@@ -5,3 +5,6 @@ dist/
 *.tsbuildinfo
 .DS_Store
 Thumbs.db
+.codegraph
+.pi-lens
+.pi
