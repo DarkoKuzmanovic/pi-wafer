@@ -27,9 +27,9 @@ Pi loads the extension at startup, calls the default export, and `pi.registerPro
 
 3. **API key via Pi OAuth flow, not env var.** The initial version had `apiKey: 'WAFER_API_KEY'` as a fallback — removed in `0c9a7a0` because it sent a literal string when the env var was unset and OAuth hadn't completed. Always go through `loginWafer()`.
 
-4. **Non-expiring credentials.** The `NEVER_EXPIRES` constant (8.64e15 ms) gives a far-future expiry. `refreshToken` is a no-op (returns credentials unchanged). This is intentional — Wafer keys don't expire.
+4. **Non-expiring credentials, refresh used for catalog sync.** The `NEVER_EXPIRES` constant (8.64e15 ms) gives a far-future expiry, but `refreshToken` is NOT a no-op anymore — it's hijacked as the only callback that receives credentials from pi after the factory runs. `ExtensionAPI` does not expose `modelRegistry` (that lives on `CustomToolContext` / `session.modelRegistry`), so `refreshToken` is the sole hook where we can call `/v1/models` with the actual key. It returns credentials unchanged but re-registers the provider with the fresh entitled catalog.
 
-5. **Qwen3.6 was removed.** The initial commit included `Qwen3.6-35B-A3B`. It was dropped in an uncommitted diff and not restored in the fix commit. The README has been updated to remove the stale entry. If restoring, it uses `deepseek` thinkingFormat, 262K context, 32K max tokens, free.
+5. **Dynamic model catalog from `/v1/models`.** `MODEL_METADATA` (Qwen3.5-397B-A17B, GLM-5.1) registers at startup so `enabledModels` patterns like `wafer/GLM-5.1` resolve immediately. When pi makes its first request, it calls the OAuth `refreshToken` callback, which fetches `/v1/models` with the user's key and re-registers the provider with the actual entitled catalog. Models the key cannot access (Kimi-K2.6, Qwen3.6-35B-A3B for Pass-only keys) never appear after that first refresh. On refresh failure, the previously-registered list is kept (transient network blips don't blank the selector). MODEL_METADATA serves as both initial-render seed AND enrichment lookup (thinking format, costs, context windows) for models returned by the API.
 
 ## Adding a new model
 

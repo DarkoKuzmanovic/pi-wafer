@@ -4,11 +4,21 @@
 
 ## Available models
 
-| Model             | Context window | Max tokens | Reasoning                   | Cost (input/output) |
-| ----------------- | -------------- | ---------- | --------------------------- | ------------------- |
-| DeepSeek V4 Pro   | 262K           | 32K        | ✅ DeepSeek format          | Free                |
-| Qwen3.5 397B A17B | 262K           | 32K        | ✅ DeepSeek format + effort | $0.60 / $3.60       |
-| GLM 5.1           | 202K           | 32K        | ✅ ZAI format               | $1.50 / $4.50       |
+Available models depend on your Wafer Pass API key entitlement. The extension fetches your accessible models dynamically from Wafer's API at startup.
+
+**Pass-included models** (commonly available):
+
+| Model             | Context window | Max tokens | Reasoning                   | Cost (input/output)  |
+| ----------------- | -------------- | ---------- | --------------------------- | -------------------- |
+| Qwen3.5 397B A17B | 262K           | 32K        | ✅ DeepSeek format + effort | $0.60 / $3.60        |
+| GLM 5.1           | 202K           | 32K        | ✅ ZAI format               | $1.50 / $4.50        |
+
+**Serverless models** (separate billing, may require opt-in):
+- Qwen3.6 35B A3B
+- Kimi K2.6
+- DeepSeek-V4-Pro
+
+Run `/model wafer/` to see models available to your key.
 
 ## Install
 
